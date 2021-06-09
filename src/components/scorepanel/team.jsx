@@ -6,15 +6,20 @@ import {
     TEAM_AWAY
 } from '../../constants/constants';
 
-export default function Team({ team, type, penalties = [] }) {
+export default function Team({ team, type, penalties, emptyGoal }) {
 
-    const { shortName, emptyGoal } = team;
+    const { 
+        shortName,
+        color
+     } = team;
 
     const classes = classnames({
         [ type ]: true,
         'section': true,
-        'has-empty-goal': emptyGoal
+        'has-empty-goal': emptyGoal[type]
     });
+
+    const colorStyle = { 'backgroundColor': color }; 
 
     return (
         <div className={classes}>
@@ -22,7 +27,7 @@ export default function Team({ team, type, penalties = [] }) {
                 <div className="empty-goal">Empty goal</div>
             </div>
             <div className="row team">
-                <div className="color"></div>
+                <div className="color" style={colorStyle}></div>
                 <div className="name">
                     { shortName }
                 </div>
@@ -30,10 +35,11 @@ export default function Team({ team, type, penalties = [] }) {
             <div className="row">
                 <div className="penalties">
                     { 
-                        (type === TEAM_AWAY ? penalties.reverse() : penalties).filter(({ team }) => team === type).map(({ id, time }) => (
+                        (( penalties.items) || []).filter(({ team }) => team === type).map(({ id, time }) => (
                             <Clock
                                 variant="penalty"
                                 time={time}
+                                key={id}
                             />
                         ))
                     }

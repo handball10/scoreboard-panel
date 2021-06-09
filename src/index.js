@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import 'animate.css';
+import 'react-notifications-component/dist/theme.css';
 import App from './App';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
 import reportWebVitals from './reportWebVitals';
+import websocketApi from './lib/websocket';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

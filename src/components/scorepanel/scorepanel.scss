@@ -68,6 +68,9 @@
         }
 
         .section {
+            display: flex;
+            flex-direction: column;
+
             &.home {
 
             }
@@ -109,6 +112,25 @@
                 line-height: 27px;
                 text-align: center;
                 min-width: 100px;
+                z-index: 1;
+                position: relative;
+            }
+
+            .timeout-reason {
+                background: $color-time;
+                color: $color-font;
+                padding: .25rem 2rem;
+                font-weight: lighter;
+                text-align: center;
+                font-size: 14px;
+                transform: translateY(-100%);
+                z-index: 0;
+                transition: transform .3s;
+                position: relative;
+
+                &.is-active {
+                    transform: translateY(0);
+                }
             }
         }
     }
