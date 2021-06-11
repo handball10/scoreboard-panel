@@ -1,7 +1,9 @@
 import { 
     GAME_EVENT,
     HEARTBEAT,
-    PARTIAL_EVENT
+    PARTIAL_EVENT,
+    PING,
+    PONG
 } from '../actions/actions';
 
 import { store } from '../app/store';
@@ -26,6 +28,9 @@ client.onerror = function() {
 client.onopen = function() {
     console.log('WebSocket Client Connected');
  
+    websocketApi.send({
+        event: PING
+    });
 };
  
 client.onclose = function() {
@@ -33,14 +38,13 @@ client.onclose = function() {
 };
  
 client.onmessage = function(e) {
+    console.log(e.data);
 
     if (typeof e.data === 'string') {
         // const data = JSON.parse(e.data);
         const { event, payload } = JSON.parse(e.data);
 
-        console.log(event, payload);
-
-        if (event === HEARTBEAT) {
+        if (event === HEARTBEAT || event === PONG) {
             store.dispatch(heartbeat(payload));
         }
         else if (event === GAME_EVENT) {

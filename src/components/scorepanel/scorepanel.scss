@@ -27,6 +27,7 @@
                 line-height: 27px;
                 min-width: 130px;
                 text-align: center;
+                flex-grow: 1;
                 // font-weight: bold;
             }
 
@@ -65,11 +66,13 @@
 
         .penalties {
             display: flex;
+            flex-wrap: wrap;
         }
 
         .section {
             display: flex;
             flex-direction: column;
+            width: 250px;
 
             &.home {
 
