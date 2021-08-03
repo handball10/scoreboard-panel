@@ -1,0 +1,66 @@
+@import '../../scss/colors.scss';
+
+$cell-padding: .75rem .5rem;
+
+.overview {
+    display: flex;
+    justify-content: center;
+
+    .team-overview {
+        width: 690px;
+        margin: 0 1rem;
+        box-shadow: 0px 0px 11px -3px #000000;
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            thead {
+                th {
+                    background-color: $color-base;
+                    padding: $cell-padding;
+                    color: #fff;
+                    font-weight: bold;
+                    font-family: Montserrat, sans-serif;
+                    text-align: center;
+                    font-size: 1.25rem;
+
+                    &.align-left {
+                        text-align: left;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        color: #fff;
+                        padding: $cell-padding;
+                        font-weight: bold;
+                        font-family: Montserrat, sans-serif;
+                        text-align: center;
+
+                        &.align-left {
+                            text-align: left;
+                        }
+                    }
+                }
+
+                tr:nth-child(even) {
+                    td {
+                        background-color: lighten($color-base, 20%);
+                    }
+                }
+
+                tr:nth-child(odd) {
+                    td {
+                        background-color: lighten($color-base, 30%);
+                    }
+                }
+
+                
+            }
+        }
+    }
+
+
+}

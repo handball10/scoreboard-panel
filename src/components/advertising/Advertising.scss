@@ -1,0 +1,95 @@
+.advertising {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1000;
+    flex-direction: row;
+    justify-content: center;
+
+    .fg-sportfoto {
+        display: none;
+    }
+
+
+    &.is-visible {
+        display: flex;
+    }
+
+    .bottom-view {
+        position: absolute;
+        height: 120px;
+        width: 500px;
+        background-color: #fff;
+        padding: .5rem 1rem;
+        align-self: flex-end;
+        margin-bottom: 1rem;
+
+        marquee {
+            display: inline-block;
+
+            .item {
+                display: inline-block;
+                margin: 0 .5rem;
+    
+                img {
+                    height: 120px;
+                    width: auto;
+                }
+            }
+        }
+
+        
+    }
+
+    .main-view {
+        height: 100vh;
+        width: 100%;
+        background-color: #fff;
+        opacity: 1;
+        transition: opacity .5s ease-in, background-color .5s ease-in;
+
+        .image-item {
+            display: flex;
+            height: inherit;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 70%;
+                height: auto;
+            }
+        }
+
+        &.no-background {
+            margin-top: 150px;
+            background: linear-gradient(rgba(0, 0, 0, .4), #fff);
+
+            .fg-sportfoto {
+                display: flex;
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    margin: 0;
+                }
+
+                img {
+                    height: 100px;
+                }
+            }
+        }
+    }
+
+    iframe {
+        .ytp-show-cards-title {
+            display: none;
+        }
+    }
+}

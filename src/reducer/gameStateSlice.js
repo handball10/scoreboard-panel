@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import {
     TEAM_HOME,
-    TEAM_AWAY
+    TEAM_AWAY,
+    ADVERTISING_MODES
 } from '../constants/constants';
 
 import InfoDisplay from '../components/infodisplay/infodisplay';
@@ -17,12 +18,14 @@ const initialState = {
             home: {
                 shortName: 'HSG D/M',
                 longName: 'HSG Dutenhofen/Münchholzhausen',
-                color: '#00ffff'
+                color: '#00ffff',
+                players: []
             },
             away: {
                 shortName: 'HSG Hanau',
                 longName: 'HSG Hanau',
-                color: '#000000'
+                color: '#000000',
+                players: []
             },
         }, 
         goals: {
@@ -51,7 +54,41 @@ const initialState = {
             }
         }
     },
-    events: []
+    events: [],
+    advertising: {
+        items: [
+            {
+                type: 'stats',
+                timeout: 15000,
+                data: {}
+            },
+            // {
+            //     type: 'youtube',
+            //     src: 'https://www.youtube.com/watch?v=Eptf0zpzeHY'
+            // },
+            {
+                type: 'video',
+                src: 'http://localhost:8000/file/?file=RTpcUHJvamVjdHNcVmlkZW9cTGl2ZVN0cmVhbWluZ1xMaW5kZW5DdXAgMjAyMVxLaXJtZXMtVHJhaWxlci0yX3NtYWxsLm1wNA=='
+            },
+            {
+                id: 'advertising-item-1',
+                type: 'image',
+                src: 'https://upload.wikimedia.org/wikipedia/de/4/4b/Bauhaus_%28Baumarkt%29_logo.svg',
+                timeout: 6000
+            },
+            {
+                id: 'advertising-item-2',
+                type: 'image',
+                src: 'https://www.sparkasse-wetzlar.de/content/dam/myif/spk-wetzlar/work/bilder/logos/spk-logo-druck.png'
+            },
+            {
+                id: 'advertising-item-3',
+                type: 'image',
+                src: 'http://localhost:8000/file?file=C:\\Users\\flori\\Pictures\\2021\\Hochzeitsauswahl\\5D4_0087.JPG'
+            }
+        ],
+        mode: ADVERTISING_MODES.FULL_SIZE
+    }
 };
 
 export const gameStateSlice = createSlice({
@@ -62,9 +99,6 @@ export const gameStateSlice = createSlice({
             state.data = { ...action.payload };
         },
         partialChange: (state, action) => {
-
-            console.log('PARTIAL', action.payload);
-
             const {
                 key,
                 value
@@ -91,6 +125,18 @@ export const gameStateSlice = createSlice({
                 },
                 width: 600
             });
+        },
+        advertisingHandler: (state, action) => {
+
+            const {
+                items = [],
+                mode = ADVERTISING_MODES.NONE,
+                duration = 5000
+            } = action.payload;
+
+            state.advertising.items = items;
+            state.advertising.mode = mode;
+
         }
     }
 });
@@ -98,10 +144,12 @@ export const gameStateSlice = createSlice({
 export const {
     heartbeat,
     eventHandler,
-    partialChange
+    partialChange,
+    advertisingHandler
 } = gameStateSlice.actions;
 
 export const selectGameState = state => state.game.data;
+export const selectAdvertising = state => state.game.advertising;
 
 export default gameStateSlice.reducer;
 

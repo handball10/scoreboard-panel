@@ -2,6 +2,7 @@ import {
     GAME_EVENT,
     HEARTBEAT,
     PARTIAL_EVENT,
+    ADVERTISING,
     PING,
     PONG
 } from '../actions/actions';
@@ -11,7 +12,9 @@ import { store } from '../app/store';
 import {
     heartbeat,
     eventHandler,
-    partialChange
+    partialChange,
+    advertisingHandler,
+
 } from '../reducer/gameStateSlice';
 
 const UNIQUE_ID = 'scoreboard';
@@ -52,6 +55,9 @@ client.onmessage = function(e) {
         }
         else if (event === PARTIAL_EVENT) {
             store.dispatch(partialChange(payload));
+        }
+        else if (event === ADVERTISING) {
+            store.dispatch(advertisingHandler(payload));
         }
     }
 };
