@@ -56,38 +56,8 @@ const initialState = {
     },
     events: [],
     advertising: {
-        items: [
-            {
-                type: 'stats',
-                timeout: 15000,
-                data: {}
-            },
-            // {
-            //     type: 'youtube',
-            //     src: 'https://www.youtube.com/watch?v=Eptf0zpzeHY'
-            // },
-            {
-                type: 'video',
-                src: 'http://localhost:8000/file/?file=RTpcUHJvamVjdHNcVmlkZW9cTGl2ZVN0cmVhbWluZ1xMaW5kZW5DdXAgMjAyMVxLaXJtZXMtVHJhaWxlci0yX3NtYWxsLm1wNA=='
-            },
-            {
-                id: 'advertising-item-1',
-                type: 'image',
-                src: 'https://upload.wikimedia.org/wikipedia/de/4/4b/Bauhaus_%28Baumarkt%29_logo.svg',
-                timeout: 6000
-            },
-            {
-                id: 'advertising-item-2',
-                type: 'image',
-                src: 'https://www.sparkasse-wetzlar.de/content/dam/myif/spk-wetzlar/work/bilder/logos/spk-logo-druck.png'
-            },
-            {
-                id: 'advertising-item-3',
-                type: 'image',
-                src: 'http://localhost:8000/file?file=C:\\Users\\flori\\Pictures\\2021\\Hochzeitsauswahl\\5D4_0087.JPG'
-            }
-        ],
-        mode: ADVERTISING_MODES.FULL_SIZE
+        items: [],
+        mode: ADVERTISING_MODES.NONE
     }
 };
 

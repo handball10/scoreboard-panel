@@ -6,10 +6,15 @@ import { ADVERTISING_ITEM_TYPES } from "../../constants/constants";
 import { Overview } from "./Overview";
 import classNames from "classnames";
 
-const timerFunction = (callback, timeout = 3000) => setTimeout(callback, timeout);
+const timerFunction = (callback, timeout = 5000) => setTimeout(callback, timeout);
 const tick = (currentValue, items = [], setter) => () => setter((currentValue + 1) >= items.length ? 0 : currentValue + 1);
 const isVideoItem = type => [ ADVERTISING_ITEM_TYPES.VIDEO, ADVERTISING_ITEM_TYPES.YOUTUBE ].includes(type);
 const isOverview = type => [ ADVERTISING_ITEM_TYPES.STATS ].includes(type);
+
+const DEFAULT_TIMEOUT = {
+    [ADVERTISING_ITEM_TYPES.STATS]: 10000,
+    [ADVERTISING_ITEM_TYPES.IMAGE]: 5000
+};
 
 const youtubeOptions = {
     height: '1080px',
@@ -24,6 +29,8 @@ const youtubeOptions = {
 }
 
 function YouTubeItem({ src, next }) {
+
+    console.log(src);
 
     const youtubeId = new URLSearchParams(new URL(src).search).get('v');
     console.log(youtubeId);
@@ -89,7 +96,7 @@ export function MainView({ items = [] }) {
 
     useEffect(() => {
         if ([ ADVERTISING_ITEM_TYPES.IMAGE, ADVERTISING_ITEM_TYPES.STATS ].includes(items[currentItemIndex]?.type)) {
-            timerFunction(tick(currentItemIndex, items, setCurrentItem), currentItem.timeout);
+            timerFunction(tick(currentItemIndex, items, setCurrentItem), currentItem.timeout || DEFAULT_TIMEOUT[items[currentItemIndex].type]);
         }
     });
 
