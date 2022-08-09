@@ -1,0 +1,59 @@
+.info-display.theme-default {
+    display: flex;
+    flex-direction: row;
+
+    .details {
+        display: flex;
+        flex-direction: column;
+        min-width: 450px;
+        background: var(--color-base);
+
+        .team {
+            padding: .5rem .75rem 0;
+            color: var(--color-score);
+        }
+
+        .name {
+            font-size: 28px;
+            padding: 0 .75rem;
+            color: var(--color-font);
+        }
+
+        .data {
+            padding: 0 .75rem;
+            color: var(--color-font);
+            font-size: 32px;
+
+            &.penalty {
+                color: var(--color-penalty);
+            }
+
+            &.goal {
+                color: var(--color-success);
+            }
+
+            &.yellow-card,
+            &.time-penalty {
+                color: var(--color-warning);
+            }
+
+            &.red-card {
+                color: var(--color-penalty);
+            }
+
+            &.blue-card {
+                color: var(--color-penalty);
+            }
+        }
+    }
+
+    .number {
+        background: var(--color-score);
+        height: 120px;
+        width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 50px;
+    }
+}

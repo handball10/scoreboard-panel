@@ -30,7 +30,8 @@ export const initialState = {
   penalties: {
     items: []
   },
-  events: {}
+  events: {},
+  theme: 'dhb'
 };
 
 export const reducer = (state, action) => {

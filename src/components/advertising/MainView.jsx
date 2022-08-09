@@ -30,10 +30,7 @@ const youtubeOptions = {
 
 function YouTubeItem({ src, next }) {
 
-    console.log(src);
-
     const youtubeId = new URLSearchParams(new URL(src).search).get('v');
-    console.log(youtubeId);
 
     return (
         <ReactPlayer

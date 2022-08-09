@@ -52,7 +52,10 @@ const initialState = {
                 isActive: false,
                 label: 'Spielenede'
             }
-        }
+        },
+        gameSettings: {
+            theme: 'dhb'
+        }      
     },
     events: [],
     advertising: {
@@ -78,7 +81,12 @@ export const gameStateSlice = createSlice({
         },
         eventHandler: (state, action) => {
 
-            const data = action.payload;
+            const data = {
+                ...action.payload,
+                theme: state.data.gameSettings.theme
+            };
+
+            console.log(JSON.stringify(state.data));
 
             notificationStore.addNotification({
                 insert: 'bottom',
@@ -90,7 +98,7 @@ export const gameStateSlice = createSlice({
                 animationOut: ["animate__animated animate__slideOutLeft"],
                 // slidingEnter: ["animate__animated animate__slideInLeft"],
                 dismiss: {
-                    duration: 6000,
+                    duration: 5600,
                     waitForAnimation: true
                 },
                 width: 600

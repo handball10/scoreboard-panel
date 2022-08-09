@@ -1,138 +1,316 @@
-@import '../../scss/colors.scss';
-
-
-.scorepanel {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    position: fixed;
-    width: 100%;
-    top: 1rem;
-
-    .center-row {
+.theme-default {
+    .scorepanel {
         display: flex;
         flex-direction: row;
-        font-size: 18px;
-
-        .team {
-
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        top: 1rem;
+    
+        .center-row {
             display: flex;
-            z-index: 1;
-            position: relative;
-
-            .name {
-                background: $color-base;
-                color: $color-font;
-                padding: .25rem 2rem;
-                line-height: 27px;
-                min-width: 130px;
-                text-align: center;
-                flex-grow: 1;
-                // font-weight: bold;
-            }
-
-            .color {
-                width: 10px;
-                height: inherit;
-                background-color: $color-penalty;
-            }
-        }
-
-        .empty-goal {
-            color: $color-font;
-            padding: .25rem 1rem;
-            font-size: 14px;
-            display: inline-block;
-            margin-left: 10px;
-            transform: translateY(100%);
-            z-index: 0;
-            transition: transform .3s;
-            position: relative;
-        }
-
-        .penalty {
-            background: $color-penalty;
-        }
-
-        .empty-goal {
-            background: $color-score;
-            color: $color-base;
-        }
-
-        .empty-goal-container {
-            display: flex;
-            margin-top: 7px;
-        }
-
-        .penalties {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .section {
-            display: flex;
-            flex-direction: column;
-            width: 250px;
-
-            &.home {
-
-            }
-
-            &.away {
-                .empty-goal-container {
-                    justify-content: flex-end;
-
-                    .empty-goal {
-                        margin-right: 10px;
-                    }
-                }
-
-                .team {
-                    flex-direction: row-reverse;
-                }
-
-                .penalties {
-                    flex-direction: row-reverse;
-                    padding-right: 10px;
-                }
-            }
-
-            &.has-empty-goal {
-                .empty-goal {
-                    transform: translateY(0);
-                }
-            }
-        }
-
-        .game {
-
-            .goals {
-                background: $color-score;
-                color: $color-base;
-                padding: .25rem 2rem;
-                // font-weight: bold;
-                font-size: 25px;
-                line-height: 27px;
-                text-align: center;
-                min-width: 100px;
+            flex-direction: row;
+            font-size: 18px;
+    
+            .team {
+    
+                display: flex;
                 z-index: 1;
                 position: relative;
+    
+                .name {
+                    background: var(--color-base);
+                    color: var(--color-font);
+                    padding: .25rem 2rem;
+                    line-height: 27px;
+                    min-width: 130px;
+                    text-align: center;
+                    flex-grow: 1;
+                    // font-weight: bold;
+                }
+    
+                .color {
+                    width: 10px;
+                    height: inherit;
+                    background-color: var(--color-penalty);
+                }
             }
-
-            .timeout-reason {
-                background: $color-time;
-                color: $color-font;
-                padding: .25rem 2rem;
-                font-weight: lighter;
-                text-align: center;
+    
+            .empty-goal {
+                color: var(--color-font);
+                padding: .25rem 1rem;
                 font-size: 14px;
-                transform: translateY(-100%);
+                display: inline-block;
+                margin-left: 10px;
+                transform: translateY(100%);
                 z-index: 0;
                 transition: transform .3s;
                 position: relative;
+            }
+    
+            .penalty {
+                background: var(--color-penalty);
+            }
+    
+            .empty-goal {
+                background: var(--color-score);
+                color: var(--color-base);
+            }
+    
+            .empty-goal-container {
+                display: flex;
+                margin-top: 7px;
+            }
+    
+            .penalties {
+                display: flex;
+                flex-wrap: wrap;
+            }
+    
+            .section {
+                display: flex;
+                flex-direction: column;
+                width: 250px;
+    
+                &.home {
+    
+                }
+    
+                &.away {
+                    .empty-goal-container {
+                        justify-content: flex-end;
+    
+                        .empty-goal {
+                            margin-right: 10px;
+                        }
+                    }
+    
+                    .team {
+                        flex-direction: row-reverse;
+                    }
+    
+                    .penalties {
+                        flex-direction: row-reverse;
+                        padding-right: 10px;
+                    }
+                }
+    
+                &.has-empty-goal {
+                    .empty-goal {
+                        transform: translateY(0);
+                    }
+                }
+            }
+    
+            .game {
+    
+                .goals {
+                    background: var(--color-score);
+                    color: var(--color-base);
+                    padding: .25rem 2rem;
+                    // font-weight: bold;
+                    font-size: 25px;
+                    line-height: 27px;
+                    text-align: center;
+                    min-width: 100px;
+                    z-index: 1;
+                    position: relative;
+                }
+    
+                .timeout-reason {
+                    background: var(--color-time);
+                    color: var(--color-font);
+                    padding: .25rem 2rem;
+                    font-weight: lighter;
+                    text-align: center;
+                    font-size: 14px;
+                    transform: translateY(-100%);
+                    z-index: 0;
+                    transition: transform .3s;
+                    position: relative;
+    
+                    &.is-active {
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+    }
+}
 
-                &.is-active {
-                    transform: translateY(0);
+.theme-dhb {
+    .scorepanel {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        position: fixed;
+        width: 100%;
+        bottom: 1rem;
+        height: 150px;
+
+    
+        .center-row {
+            display: flex;
+            flex-direction: row;
+            font-size: var(--font-size-team);
+            text-transform: uppercase;
+    
+            .team {
+    
+                display: flex;
+                z-index: 1;
+                position: relative;
+    
+                .name {
+                    background: var(--color-base);
+                    color: var(--color-font);
+                    padding: .25rem 1rem;
+                    line-height: var(--font-size-team);
+                    min-width: 60px;
+                    text-align: center;
+                    flex-grow: 1;
+                    // font-weight: bold;
+                }
+    
+                .color {
+                    width: 10px;
+                    height: inherit;
+                    background-color: var(--color-penalty);
+                }
+            }
+    
+            .empty-goal {
+                color: var(--color-font);
+                padding: .25rem 1rem;
+                font-size: 14px;
+                display: inline-block;
+                margin-left: 10px;
+                transform: translateY(100%);
+                z-index: 0;
+                transition: transform .3s;
+                position: relative;
+            }
+    
+            .penalty {
+                background: var(--color-penalty);
+            }
+    
+            .empty-goal {
+                background: var(--color-score);
+                color: var(--color-base);
+            }
+    
+            .empty-goal-container {
+                display: flex;
+                margin-top: 7px;
+            }
+    
+            .penalties {
+                display: flex;
+                flex-wrap: wrap;
+            }
+    
+            .section {
+                display: flex;
+                flex-direction: column;
+                width: 150px;
+    
+                &.home {
+                    .team {
+                        .name {
+                            text-align: left;
+                        }
+                    }
+                }
+    
+                &.away {
+                    .empty-goal-container {
+                        justify-content: flex-end;
+    
+                        .empty-goal {
+                            margin-right: 10px;
+                        }
+                    }
+    
+                    .team {
+                        flex-direction: row-reverse;
+
+                        .name {
+                            text-align: right;
+                        }
+                    }
+    
+                    .penalties {
+                        flex-direction: row-reverse;
+                        padding-right: 10px;
+                    }
+                }
+    
+                &.has-empty-goal {
+                    .empty-goal {
+                        transform: translateY(0);
+                    }
+                }
+            }
+    
+            .game {
+                // display: flex;
+                // flex-direction: column;
+                z-index: 10;
+                margin: 10px -15px;
+                position: relative;
+
+                .clock.is-regular {
+                    z-index: 1;
+                }
+    
+                .goals {
+                    position: relative;
+                    background: none;
+                    color: var(--color-score);
+                    // font-weight: bold;
+                    font-size: var(--font-size-goals);
+                    line-height: var(--font-size-goals);
+                    // line-height: 25px;
+                    text-align: center;
+                    min-width: 120px;
+                    z-index: 1;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    z-index: 1;
+                    transform: translateY(calc(-100% - 4px));
+                    
+                    .home {
+                        transform: translateX(calc(-100% - 10px));
+                    }
+
+                    .guest {
+                        transform: translateX(calc(100% + 10px));
+                    }
+
+                    .separator {
+                        display: none;
+                    }
+                }
+    
+                .timeout-reason {
+                    position: absolute;
+                    top: 10px;
+                    color: var(--color-base);
+                    text-align: center;
+                    font-size: 12px;
+                    // transform: translateY(-100%);
+                    z-index: 0;
+                    transition: opacity .3s;
+                    opacity: 0;
+                    text-align: center;
+                    width: 100%;
+    
+                    &.is-active {
+                        transform: translateY(0);
+                        opacity: 1;
+                    }
                 }
             }
         }

@@ -1,7 +1,10 @@
 export function TeamOverview({ team }) {
 
+    console.log(team);
+
     return (
         <div className="team-overview">
+            <span>{team.longName}</span>
             <table>
                 <thead>
                     <tr>

@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { useSelector } from "react-redux";
-import YouTube from "react-youtube";
 import { ADVERTISING_MODES } from "../../constants/constants";
 import { selectAdvertising } from "../../reducer/gameStateSlice";
 

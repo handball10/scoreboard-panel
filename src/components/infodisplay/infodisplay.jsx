@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 
-import './infodisplay.scss';
+import defaultTemplate from './templates/default';
+import dhbTemplate from './templates/dhb';
 
-const DATA_TYPES = {
-    PENALTY: 'penalty',
-    GOAL: 'goal',
-    YELLOW_CARD: 'yellowcard',
-    RED_CARD: 'redcard',
-    BLUE_CARD: 'bluecard'
-};
+import './infodisplay.scss';
+import { selectGameState } from '../../reducer/gameStateSlice';
+import { useSelector } from 'react-redux';
+
+import {
+    DATA_TYPES
+} from '../../constants/constants';
 
 const MESSAGES = {
-    [DATA_TYPES.PENALTY]: (quantity) => `2min Zeitstrafe (${quantity}.)`,
+    [DATA_TYPES.PENALTY]: (quantity) => `${quantity}. Zeitstrafe`,
     [DATA_TYPES.GOAL]: (quantity) => `${quantity}. Tor`,
     [DATA_TYPES.YELLOW_CARD]: () => 'Gelbe Karte',
     [DATA_TYPES.RED_CARD]: () => 'Rote Karte',
     [DATA_TYPES.BLUE_CARD]: () => 'Blaue Karte'
 };
 
-export default function InfoDisplay({ type, team, player, quantity = 0 }) {
+const THEME_TEMPLATES = {
+    'default': defaultTemplate,
+    'dhb': dhbTemplate,
+};
+
+export default function InfoDisplay({ type, team, player, quantity = 0, theme }) {
 
     const detailClasses = classnames({
         'data': true,
@@ -32,18 +38,19 @@ export default function InfoDisplay({ type, team, player, quantity = 0 }) {
 
     const message = MESSAGES[type](quantity);
 
+    const payload = {
+        type, team, player, quantity,
+        message, detailClasses
+    };
+
+    // const {
+    //     gameSettings
+    // } = useSelector(selectGameState);
+    
+
     return (
         <div className='info-display'>
-            { player.number && (
-                <div className="number">
-                    {player.number}
-                </div>
-            )}
-            <div className="details">
-                <div className="team">{team}</div>
-                <div className="name">{player.name}</div>
-                <div className={detailClasses}>{message}</div>
-            </div>
+            {THEME_TEMPLATES[theme](payload)}
         </div>
     )
 }

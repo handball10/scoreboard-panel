@@ -37,7 +37,9 @@ export default function ScorePanel() {
                 <div className="game">
                     <Clock variant="regular" time={gameTime} />
                     <div className="goals">
-                        { `${goals.home}:${goals.away}` }
+                        <span className="home">{goals.home}</span>
+                        <span className="separator">:</span>
+                        <span className="guest">{goals.away}</span>
                     </div>
                     <div className={timeoutClasses}>
                         {currentGameTimeoutState.label}

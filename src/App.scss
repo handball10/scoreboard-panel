@@ -1,0 +1,43 @@
+.App {
+    background-color: #1d3557;
+
+    &.theme-default {
+        --color-base: rgb(29, 53, 87);
+        --color-penalty: #e63946;
+        --color-font: #f1faee;
+        --color-score: #a8dadc;
+        --color-time: #457b9d;
+        --color-success: #68AD5A;
+        --color-warning: #DBD035;
+        --color-base-transparent-70: rgba(29, 53, 87, .7);
+
+        font-family: 'Archivo Black', sans-serif;
+    }
+
+    &.theme-dhb {
+        --color-base: rgb(32, 36, 46);
+        --color-penalty: rgb(229, 47, 61);
+        --color-font: #f1faee;
+        --color-score: rgb(246, 201, 42);
+        --color-time: var(--color-score);
+        --color-success: #68AD5A;
+        --color-warning: var(--color-score);
+        --color-neutral-background: var(--color-font);
+        --color-base-transparent-70: rgba(32, 36, 46, .7);
+        --color-base-transparent-50: rgba(32, 36, 46, .5);
+        --color-card-yellow: rgb(246, 201, 42);
+        --color-card-red: var(--color-penalty);
+        --color-card-blue: rgb(42, 79, 246);
+
+        --font-size-team: 32px;
+        --font-size-table: 24px;
+        --font-size-goals: var(--font-size-team);
+        --font-size-time: var(--font-size-team);
+
+        font-family: 'Calibri';
+        font-weight: bold;
+
+        .notification-container--bottom-left{left:20px;bottom:60px}
+    }
+
+}

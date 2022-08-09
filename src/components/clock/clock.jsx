@@ -19,7 +19,7 @@ export default function Clock(props) {
 
     return (
         <div className={classes}>
-            {formatSeconds(time)}
+            <span>{formatSeconds(time)}</span>
         </div>
     )
 };

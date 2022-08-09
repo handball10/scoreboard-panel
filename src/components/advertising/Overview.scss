@@ -1,6 +1,12 @@
-@import '../../scss/colors.scss';
+// @import '../../scss/colors.scss';
 
-$cell-padding: .75rem .5rem;
+$cell-padding: .5rem;
+
+.theme-dhb {
+    .fg-sportfoto {
+        display: none!important;
+    }
+}
 
 .overview {
     display: flex;
@@ -9,20 +15,27 @@ $cell-padding: .75rem .5rem;
     .team-overview {
         width: 690px;
         margin: 0 1rem;
-        box-shadow: 0px 0px 11px -3px #000000;
+
+        > span {
+            padding: .5rem 1.75rem;
+            font-size: var(--font-size-team);
+            color: var(--color-font);
+            background-color: var(--color-base-transparent-70);
+            display: block;
+        }
+        // box-shadow: 0px 0px 11px -3px #000000;
 
         table {
             border-collapse: collapse;
             width: 100%;
             thead {
                 th {
-                    background-color: $color-base;
+                    background-color: var(--color-base);
+                    color: var(--color-font);
                     padding: $cell-padding;
-                    color: #fff;
-                    font-weight: bold;
-                    font-family: Montserrat, sans-serif;
                     text-align: center;
-                    font-size: 1.25rem;
+                    font-size: var(--font-size-table);
+                    font-weight: normal;
 
                     &.align-left {
                         text-align: left;
@@ -33,11 +46,11 @@ $cell-padding: .75rem .5rem;
             tbody {
                 tr {
                     td {
-                        color: #fff;
+                        color: var(--color-font);
                         padding: $cell-padding;
-                        font-weight: bold;
-                        font-family: Montserrat, sans-serif;
+                        font-weight: normal;
                         text-align: center;
+                        background-color: var(--color-base-transparent-70);
 
                         &.align-left {
                             text-align: left;
@@ -45,22 +58,20 @@ $cell-padding: .75rem .5rem;
                     }
                 }
 
-                tr:nth-child(even) {
-                    td {
-                        background-color: lighten($color-base, 20%);
-                    }
-                }
+                // tr:nth-child(even) {
+                //     td {
+                //         background-color: lighten($color-base, 20%);
+                //     }
+                // }
 
-                tr:nth-child(odd) {
-                    td {
-                        background-color: lighten($color-base, 30%);
-                    }
-                }
+                // tr:nth-child(odd) {
+                //     td {
+                //         background-color: lighten($color-base, 30%);
+                //     }
+                // }
 
                 
             }
         }
     }
-
-
 }

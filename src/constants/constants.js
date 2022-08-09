@@ -13,3 +13,11 @@ export const ADVERTISING_ITEM_TYPES = {
     IMAGE: 'image',
     STATS: 'stats'
 };
+
+export const DATA_TYPES = {
+    PENALTY: 'penalty',
+    GOAL: 'goal',
+    YELLOW_CARD: 'yellowcard',
+    RED_CARD: 'redcard',
+    BLUE_CARD: 'bluecard'
+};
